@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include
+		resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<include
+		resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+	<springProperty scope="context"
+		name="LOG_FILE_CLEAN_HISTORY_ON_START"
+		source="logback.logging.file.clean.history" />
+	<springProperty scope="context"
+		name="LOG_FILE_TOTAL_SIZE_CAP" source="logback.logging.file.cap-size" />
+	<springProperty scope="context" name="LOG_ROOT_MODE"
+		source="logback.logging.root.mode" />
+	<springProperty scope="context" name="LOG_CXF_MODE"
+		source="logback.logging.cxf.mode" />
+	<springProperty scope="context" name="LOG_APP_MODE"
+		source="logback.logging.app.mode" />
+
+	<appender name="FILE"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder>
+			<pattern>${FILE_LOG_PATTERN}</pattern>
+		</encoder>
+		<file>${LOG_FILE}.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<cleanHistoryOnStart>${LOG_FILE_CLEAN_HISTORY_ON_START:-false}
+			</cleanHistoryOnStart>
+			<fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log.gz
+			</fileNamePattern>
+			<maxFileSize>${LOG_FILE_MAX_SIZE:-10MB}</maxFileSize>
+			<maxHistory>${LOG_FILE_MAX_HISTORY:-0}</maxHistory>
+			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	<logger name="org.apache.cxf.services" level="${LOG_CXF_MODE}" 
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="org.apache.cxf.phase" level="${LOG_CXF_MODE}"
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<logger name="com.opendevj.soap" level="${LOG_APP_MODE}"
+		additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE" />
+	</logger>
+	<root level="${LOG_ROOT_MODE}">
+		<appender-ref ref="CONSOLE" />
+	</root>
+</configuration>

@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "feing.client.config.SecurityS2SClient.error-decoder",
+  "type": "java.lang.String",
+  "description": "A description for 'feing.client.config.SecurityS2SClient.error-decoder'"
+}]}
