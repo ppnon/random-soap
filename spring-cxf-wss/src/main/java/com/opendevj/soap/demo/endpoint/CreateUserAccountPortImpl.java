@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
 
 import com.opendevj.soap.demo.endpoint.dto.RequestCreateUserAccount;
 import com.opendevj.soap.demo.endpoint.dto.ResponseCreateUserAccount;
-import com.opendevj.soap.demo.service.AccountService;
+import com.opendevj.soap.demo.service.UserAccountService;
 
 @WebService(serviceName="userAccountPortService", 
 			portName = "userAccountPort", 
@@ -20,7 +20,7 @@ public class CreateUserAccountPortImpl implements CreateUserAccountPort {
 	
 	@Autowired
 	@Qualifier("accountService")
-	private AccountService service;
+	private UserAccountService service;
 	
 	@Override
 	public ResponseCreateUserAccount createUserAccount(RequestCreateUserAccount request) {

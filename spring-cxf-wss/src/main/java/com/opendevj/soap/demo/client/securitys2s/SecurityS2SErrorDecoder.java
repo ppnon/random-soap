@@ -18,14 +18,14 @@ public class SecurityS2SErrorDecoder implements ErrorDecoder{
 		
 		log.debug("Error Response: [{}] {}", response.status(), response.body().toString());
 		
-		S2SResponse responseS2S;
+		S2SResponse<?> responseS2S;
 		try {
 			responseS2S = new ObjectMapper().readValue(response.body().asInputStream(), S2SResponse.class);
 
 		} catch (Exception e) {
 			log.debug("Error trying to read the response: {}", e.getMessage());
 			
-			responseS2S = new S2SResponse();
+			responseS2S = new S2SResponse.Builder<>().build();
 		}
 		
 		return new ClientDecoderException(HttpStatus.valueOf(response.status()), responseS2S);

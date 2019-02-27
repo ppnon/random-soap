@@ -21,7 +21,7 @@ public interface CreateUserAccountPort {
 				targetNamespace = Constants.NAMESPACE_DOCUMENT)
 	@WebMethod(operationName = "CreateUserAccount")
 	@Valid
-	public ResponseCreateUserAccount createUserAccount(@Valid  @WebParam(name = "RequestCreateUserAccount", 
+	ResponseCreateUserAccount createUserAccount(@Valid  @WebParam(name = "RequestCreateUserAccount", 
 		targetNamespace = Constants.NAMESPACE_DOCUMENT) RequestCreateUserAccount request);
 	
 }

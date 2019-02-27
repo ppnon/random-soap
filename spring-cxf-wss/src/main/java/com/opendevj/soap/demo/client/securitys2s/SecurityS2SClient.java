@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.opendevj.soap.demo.client.securitys2s.dto.S2SCredentialRequest;
+import com.opendevj.soap.demo.client.securitys2s.dto.S2SCredentialResponse;
 import com.opendevj.soap.demo.client.securitys2s.dto.S2SResponse;
 
 @FeignClient(name="securityS2SClient", url="${client.securityS2SClient.url}", 
@@ -15,5 +16,5 @@ import com.opendevj.soap.demo.client.securitys2s.dto.S2SResponse;
 public interface SecurityS2SClient {
 	
 	@PostMapping(value="${client.securityS2SClient.login.path}", produces=MediaType.APPLICATION_JSON_VALUE)
-	ResponseEntity<S2SResponse> login(@RequestBody S2SCredentialRequest credentials);
+	ResponseEntity<S2SResponse<S2SCredentialResponse>> login(@RequestBody S2SCredentialRequest credentials);
 }

@@ -2,15 +2,32 @@ package com.opendevj.soap.demo.client.acaccounts.dto;
 
 import java.io.Serializable;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.ToString;
 
-@Data
+@Getter
+@ToString
 public class AcProfileRequest implements Serializable {
 
 
 	private static final long serialVersionUID = 1L;
 	private String id;
-	public AcProfileRequest(String id) {
-		this.id = id;
+	
+	private AcProfileRequest() {}
+	
+	public static class Builder {
+		
+		private String id;
+		
+		public Builder widthId(String id) {
+			this.id = id;
+			return this;
+		}
+		
+		public AcProfileRequest build() {
+			AcProfileRequest instance = new AcProfileRequest();
+			instance.id = this.id;
+			return instance;
+		}
 	}
 }

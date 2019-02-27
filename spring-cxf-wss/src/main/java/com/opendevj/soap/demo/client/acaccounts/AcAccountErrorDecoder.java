@@ -18,13 +18,13 @@ public class AcAccountErrorDecoder implements ErrorDecoder {
 		
 		log.debug("Error Response: [{}] {}", response.status(), response.body().toString());
 		
-		AcResponse responseAC;
+		AcResponse<?> responseAC;
 		try {
 			responseAC = new ObjectMapper().readValue(response.body().asInputStream(), AcResponse.class);
 		} catch (Exception e) {
 			log.debug("Error trying to read the response: {}", e.getMessage());
 			
-			responseAC = new AcResponse();
+			responseAC = new AcResponse.Builder<>().build();
 		}
 		
 		return new ClientDecoderException(HttpStatus.valueOf(response.status()), responseAC);
