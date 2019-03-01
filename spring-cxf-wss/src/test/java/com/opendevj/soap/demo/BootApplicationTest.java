@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @SpringBootTest
 @Slf4j
-public class SpringCXFWSSApplicationTest {
+public class BootApplicationTest {
 
 	@Test
 	public void contextLoads() {

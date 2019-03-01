@@ -38,20 +38,22 @@ import lombok.extern.slf4j.Slf4j;
 @Service("accountService")
 public class UserAccountServiceImpl implements UserAccountService {
 	
-	@Autowired
-	private Messages envMessages;
-
 	@Value("${countryId}")
 	private String countryId;
 	
 	@Value("${entityId}")
 	private String entityId;
 	
-	@Autowired
-	AcAccountClient client;
+	private AcAccountClient client;
+	private Validator validator;
+	private Messages envMessages;
 	
 	@Autowired
-	Validator validator;
+	public UserAccountServiceImpl(AcAccountClient client, Validator validator, Messages messages) {
+		this.client = client;
+		this.validator = validator;
+		this.envMessages = messages;
+	}
 	
 	@Override
 	public ResponseCreateUserAccount createAccount(RequestCreateUserAccount request) {

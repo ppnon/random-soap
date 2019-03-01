@@ -29,14 +29,17 @@ import com.opendevj.soap.demo.util.Messages;
 @Service("authenticationService")
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-	@Autowired
-	private SecurityS2SClient client;
-	
-	@Autowired
-	private Messages envMessages;
-	
 	@Value("${appCode}")
 	private String appCode;
+	
+	private SecurityS2SClient client;	
+	private Messages envMessages;
+	
+	@Autowired
+	public AuthenticationServiceImpl(SecurityS2SClient client, Messages messages) {
+		this.client = client;
+		this.envMessages = messages;
+	}
 	
 	@Override
 	public UserDetails doAuthenticate(String username, String credential) {

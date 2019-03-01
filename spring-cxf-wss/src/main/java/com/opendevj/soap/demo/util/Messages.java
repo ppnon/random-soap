@@ -19,10 +19,13 @@ public class Messages {
 	
 	public static final String MSG_SERVICE_ERROR = "Problema al momento de procesar su solicitud";
 	
-	@Autowired
 	private MessageSource messageSource;
-
 	private MessageSourceAccessor accessor;
+	
+	@Autowired
+	public Messages(MessageSource messageSource) {
+		this.messageSource = messageSource;
+	}
 	
 	@PostConstruct
 	private void init() {

@@ -8,6 +8,7 @@ import org.apache.cxf.binding.soap.SoapMessage;
 import org.apache.cxf.binding.soap.interceptor.AbstractSoapInterceptor;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.Phase;
+import org.apache.cxf.transport.http.AbstractHTTPDestination;
 import org.slf4j.MDC;
 
 import com.opendevj.soap.demo.util.Constants;
@@ -65,7 +66,7 @@ public class SoapMessageInterceptor extends AbstractSoapInterceptor {
 	}
 	
 	private String getRemoteAddress(SoapMessage message) {
-		HttpServletRequest request = (HttpServletRequest) message.get("HTTP.REQUEST");
+		HttpServletRequest request = (HttpServletRequest) message.get(AbstractHTTPDestination.HTTP_REQUEST);
 		return request.getRemoteAddr();
 	}
 

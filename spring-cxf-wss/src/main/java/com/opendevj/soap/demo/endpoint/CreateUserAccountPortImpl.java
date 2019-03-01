@@ -3,7 +3,6 @@ package com.opendevj.soap.demo.endpoint;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -21,9 +20,13 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class CreateUserAccountPortImpl implements CreateUserAccountPort {
 	
-	@Autowired
-	@Qualifier("accountService")
+	
 	private UserAccountService service;
+	
+	@Autowired
+	public CreateUserAccountPortImpl(UserAccountService service) {
+		this.service = service;
+	}
 	
 	@Override
 	public ResponseCreateUserAccount createUserAccount(RequestCreateUserAccount request) {

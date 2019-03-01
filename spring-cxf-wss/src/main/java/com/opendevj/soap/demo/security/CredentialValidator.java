@@ -20,8 +20,12 @@ import org.springframework.util.StringUtils;
 @Component
 public class CredentialValidator implements Validator {
 
-	@Autowired
 	private AuthenticationManager providerManager;
+	
+	@Autowired
+	public CredentialValidator(AuthenticationManager providerManager) {
+		this.providerManager = providerManager;
+	}
 	
 	@Override
 	public Credential validate(Credential credential, RequestData data) throws WSSecurityException {

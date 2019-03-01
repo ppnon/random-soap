@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableFeignClients
 @EnableHystrix
-public class SpringCXFWSSApplication {
+public class BootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringCXFWSSApplication.class, args);
+		SpringApplication.run(BootApplication.class, args);
 	}
 }
 

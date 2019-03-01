@@ -9,7 +9,7 @@ public class AcAccountFallback implements FallbackFactory<AcAccountClient>{
 
 	@Override
 	public AcAccountClient create(Throwable cause) {
-		return new AcAccountsClientImpl(cause);
+		return new AcAccountClientImpl(cause);
 	}
  
 }

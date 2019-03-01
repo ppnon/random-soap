@@ -18,11 +18,11 @@ import com.opendevj.soap.demo.exception.InternalServiceException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class AcAccountsClientImpl implements AcAccountClient {
+public class AcAccountClientImpl implements AcAccountClient {
 
 	private final Throwable cause;
 	
-	public AcAccountsClientImpl(Throwable cause) {
+	public AcAccountClientImpl(Throwable cause) {
 		this.cause = cause;
 	}
 	

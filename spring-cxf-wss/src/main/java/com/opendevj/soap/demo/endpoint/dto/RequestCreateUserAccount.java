@@ -13,6 +13,7 @@ import javax.xml.bind.annotation.XmlType;
 import com.opendevj.soap.demo.util.Regexp;
 
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -35,6 +36,7 @@ import lombok.ToString;
     "profileId"
 })
 @Getter
+@Setter
 @ToString
 public class RequestCreateUserAccount {
 
@@ -54,22 +56,26 @@ public class RequestCreateUserAccount {
     @NotBlank(message="No debe ser vacío")
     @Pattern(regexp=Regexp.PERSON_NAME, flags=Pattern.Flag.CASE_INSENSITIVE, message="No debe contener caracteres extraños")
     @Size(max=50, message="Debe tener una longitud no mayor a 50")
+    @ToString.Exclude
     protected String firstName;
     
     @XmlElement(required = false)
     @Pattern(regexp=Regexp.PERSON_NAME, flags=Pattern.Flag.CASE_INSENSITIVE, message="No debe contener caracteres extraños")
     @Size(max=50, message="Debe tener una longitud no mayor a 50")
+    @ToString.Exclude
     protected String middleName;
     
     @XmlElement(required = true)
     @NotBlank(message="No debe ser vacío")
     @Pattern(regexp=Regexp.PERSON_NAME, flags=Pattern.Flag.CASE_INSENSITIVE, message="No debe contener caracteres extraños")
     @Size(max=50, message="Debe tener una longitud no mayor a 50")
+    @ToString.Exclude
     protected String surname;
     
     @XmlElement(required = false)
     @Pattern(regexp=Regexp.PERSON_NAME, flags=Pattern.Flag.CASE_INSENSITIVE, message="No debe contener caracteres extraños")
     @Size(max=50, message="Debe tener una longitud no mayor a 50")
+    @ToString.Exclude
     protected String secondSurname;
     
     @XmlElement(required = true)
@@ -85,12 +91,14 @@ public class RequestCreateUserAccount {
     @NotBlank(message="No debe ser vacío")
     @Pattern(regexp=Regexp.DIGITS, message="Debe estar commpuesto de dígitos")
     @Size(min=8, max=11, message="Debe de tener una longitud de 8 a 11")
+    @ToString.Exclude
     protected String documentIDNumber;
     
     @XmlElement(required = true)
     @NotBlank(message="No debe ser vacío")
     @Pattern(regexp=Regexp.EMAIL, message="Formato de correo inválido")
     @Size(max=200, message="Debe tener una longitud no mayor a 200")
+    @ToString.Exclude
     protected String email;
     
     @XmlElement(required = true)

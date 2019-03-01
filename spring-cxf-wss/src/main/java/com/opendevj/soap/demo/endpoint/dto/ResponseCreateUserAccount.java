@@ -24,15 +24,24 @@ import lombok.ToString;
 public class ResponseCreateUserAccount {
 
     @XmlElement(required = true, nillable = true)
+    @ToString.Exclude
     protected String firstName;
+    
     @XmlElement(required = false, nillable = true)
+    @ToString.Exclude
     protected String middleName;
+    
     @XmlElement(required = true, nillable = true)
+    @ToString.Exclude
     protected String surname;
+    
     @XmlElement(required = false, nillable = true)
+    @ToString.Exclude
     protected String secondSurname;
+    
     @XmlElement(required = true, nillable = true)
     protected String username;
+    
     @XmlElement(required = true, nillable = true)
     @ToString.Exclude
     protected String credential;
