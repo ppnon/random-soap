@@ -66,27 +66,31 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 				
 				return user;
 			} catch (Exception e) {
-				throw new InternalServiceException(
-						envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_ERROR));
+				throw new InternalServiceException("S401",
+						envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_ERROR));
 			}
 			
-		} else { 
-			if (!CollectionUtils.isEmpty(response.getBody().getErrors())) {
+		} else if (!CollectionUtils.isEmpty(response.getBody().getErrors())) {
 				
-				String message = getError(response.getBody().getErrors(), Constants.LOGIN_ACCOUNT_ERROR_CODE);
-				if (StringUtils.hasText(message)) {
-					throw new AuthenticationCredentialsNotFoundException(message);
-				}
-				
-				message = getError(response.getBody().getErrors(), Constants.LOGIN_AUTH_ERROR_CODE);
-				if (StringUtils.hasText(message)) {
-					throw new AuthenticationCredentialsNotFoundException(envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_INVALID));
-				}
+			String message = getError(response.getBody().getErrors(), Constants.LOGIN_ACCOUNT_ERROR_CODE);
+			
+			if (StringUtils.hasText(message)) {
+				throw new AuthenticationCredentialsNotFoundException(message);
 			}
 			
-			throw new InternalServiceException("S401", envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_ERROR));
-				
+			message = getError(response.getBody().getErrors(), Constants.LOGIN_AUTH_ERROR_CODE);
+			if (StringUtils.hasText(message)) {
+				throw new AuthenticationCredentialsNotFoundException(
+						envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_INVALID));
+			}
+			
+			throw new InternalServiceException("S401", 
+					envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_ERROR));
+		} else {
+			throw new InternalServiceException("S401", 
+					envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_ERROR));
 		}
+				
 	}
 	
 	private String getError(List<S2SError> errors, List<String> codes) {

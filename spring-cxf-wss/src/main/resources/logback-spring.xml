@@ -34,12 +34,7 @@
 			<totalSizeCap>${LOG_FILE_TOTAL_SIZE_CAP:-0}</totalSizeCap>
 		</rollingPolicy>
 	</appender>
-	<logger name="org.apache.cxf.services" level="${LOG_CXF_MODE}" 
-		additivity="false">
-		<appender-ref ref="CONSOLE" />
-		<appender-ref ref="FILE" />
-	</logger>
-	<logger name="org.apache.cxf.phase" level="${LOG_CXF_MODE}"
+	<logger name="org.apache.cxf" level="${LOG_CXF_MODE}" 
 		additivity="false">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
@@ -49,7 +44,8 @@
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
 	</logger>
-	<root level="${LOG_ROOT_MODE}">
+	<root>
+		<level value="${LOG_ROOT_MODE}"/>
 		<appender-ref ref="CONSOLE" />
 	</root>
 </configuration>

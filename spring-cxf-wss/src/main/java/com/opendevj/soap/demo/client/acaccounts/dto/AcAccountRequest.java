@@ -2,12 +2,15 @@ package com.opendevj.soap.demo.client.acaccounts.dto;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AcAccountRequest implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

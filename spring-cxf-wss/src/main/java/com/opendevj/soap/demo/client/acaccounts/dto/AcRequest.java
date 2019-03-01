@@ -2,11 +2,14 @@ package com.opendevj.soap.demo.client.acaccounts.dto;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AcRequest<T extends Serializable> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,6 +43,7 @@ public class AcRequest<T extends Serializable> implements Serializable {
 	
 	@Getter
 	@ToString
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Metadata implements Serializable {
 		
 		private static final long serialVersionUID = 1L;

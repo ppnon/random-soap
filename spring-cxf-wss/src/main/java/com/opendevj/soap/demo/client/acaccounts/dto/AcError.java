@@ -1,4 +1,4 @@
-package com.opendevj.soap.demo.client.securitys2s.dto;
+package com.opendevj.soap.demo.client.acaccounts.dto;
 
 import java.io.Serializable;
 
@@ -10,18 +10,25 @@ import lombok.ToString;
 @Getter
 @ToString(callSuper=true, includeFieldNames=true)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class S2SError implements Serializable {
+public class AcError implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private String userMessage;
+	private String traceId;
 	private String code;
+	private String userMessage;
 	
-	private S2SError() {}
+	private AcError() {}
 	
 	public static class Builder {
 		
-		private String userMessage;
+		private String traceId;
 		private String code;
+		private String userMessage;
+		
+		public Builder widthTraceId(String traceId) {
+			this.traceId = traceId;
+			return this;
+		}
 		
 		public Builder widthUserMessage(String userMessage) {
 			this.userMessage = userMessage;
@@ -33,8 +40,9 @@ public class S2SError implements Serializable {
 			return this;
 		}
 		
-		public S2SError build() {
-			S2SError instance = new S2SError();
+		public AcError build() {
+			AcError instance = new AcError();
+			instance.traceId = traceId;
 			instance.userMessage = this.userMessage;
 			instance.code = this.code;
 			return instance;

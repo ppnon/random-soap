@@ -21,11 +21,11 @@ import com.opendevj.soap.demo.client.acaccounts.dto.AcResponse;
 				configuration=AcAccountConfig.class)
 public interface AcAccountClient {
 
-	@PostMapping(value="${client.acaccountsClient.post.accounts.path}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="${client.acaccountsClient.post.createAccount.path}", produces=MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<AcResponse<AcAccountResponse>> createAccount(
 			@RequestBody AcRequest<AcAccountRequest> account);
 	
-	@PostMapping(value="${client.acaccountsClient.post.accounts.officeprofile.path}", produces=MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value="${client.acaccountsClient.post.associateProfile.path}", produces=MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<AcResponse<AcProfileResponse>> associateProfile(
 			@PathVariable(name="id", required=true) String id,
 			@RequestBody AcRequest<ArrayList<AcProfileRequest>> account);

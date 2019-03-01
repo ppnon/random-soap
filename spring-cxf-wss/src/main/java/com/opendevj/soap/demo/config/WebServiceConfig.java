@@ -25,6 +25,8 @@ import com.opendevj.soap.demo.interceptor.SoapFaultInterceptor;
 import com.opendevj.soap.demo.interceptor.SoapMessageInterceptor;
 import com.opendevj.soap.demo.security.CredentialValidator;
 
+import brave.Tracer;
+
 @Configuration
 public class WebServiceConfig {
 
@@ -58,7 +60,7 @@ public class WebServiceConfig {
     }
 	
     @Bean
-    public Endpoint createUserAcoountEndpoint() {
+    public Endpoint createUserAcoountEndpoint(Tracer tracer) {
         EndpointImpl endpoint = new EndpointImpl(bus(), createUserAccountPort);
         endpoint.setPublishedEndpointUrl(env.getProperty("endpoint.createUserAccountPort.published.url"));
         endpoint.publish(env.getProperty("endpoint.createUserAccountPort.publish"));
@@ -66,7 +68,7 @@ public class WebServiceConfig {
         Map<String, Object> props = new HashMap<>();
         props.put("ws-security.ut.validator", validator);
         endpoint.setProperties(props);
-        
+
         Map<String, Object> inProps = new HashMap<>();
         inProps.put(WSHandlerConstants.ACTION, WSHandlerConstants.USERNAME_TOKEN);
         inProps.put(WSHandlerConstants.PASSWORD_TYPE, WSConstants.PW_TEXT);
@@ -80,12 +82,13 @@ public class WebServiceConfig {
         endpoint.getInInterceptors()
         	.add(new BeanValidationInInterceptor());
         endpoint.getInInterceptors()
-        	.add(new SoapMessageInterceptor(Phase.PRE_LOGICAL));
+        	.add(new SoapMessageInterceptor(Phase.PRE_LOGICAL, tracer));
         endpoint.getOutInterceptors()
-        	.add(new SoapMessageInterceptor(Phase.PRE_LOGICAL_ENDING));
+        	.add(new SoapMessageInterceptor(Phase.PRE_LOGICAL_ENDING, tracer));
         endpoint.getOutFaultInterceptors()
         	.add(new SoapFaultInterceptor(Phase.MARSHAL));
-
         return endpoint;
     }
+    
+    
 }

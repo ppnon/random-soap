@@ -2,6 +2,7 @@ package com.opendevj.soap.demo.client.acaccounts;
 
 import org.springframework.http.HttpStatus;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opendevj.soap.demo.client.acaccounts.dto.AcResponse;
 import com.opendevj.soap.demo.exception.ClientDecoderException;
@@ -12,22 +13,24 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class AcAccountErrorDecoder implements ErrorDecoder {
-
+	
 	@Override
 	public Exception decode(String methodKey, Response response) {
 		
-		log.debug("Error Response: [{}] {}", response.status(), response.body().toString());
-		
-		AcResponse<?> responseAC;
+		log.warn("Response to decode: {}[{}] : {}", methodKey, response.status(), response.body());
+
 		try {
-			responseAC = new ObjectMapper().readValue(response.body().asInputStream(), AcResponse.class);
-		} catch (Exception e) {
-			log.debug("Error trying to read the response: {}", e.getMessage());
+			AcResponse<?> body = new ObjectMapper().readValue(
+					response.body().asInputStream(), new TypeReference<AcResponse<?>>() {});
 			
-			responseAC = new AcResponse.Builder<>().build();
+			log.debug("Reponse decoded: {}", body.toString());
+
+			return new ClientDecoderException(HttpStatus.valueOf(response.status()), body);
+		} catch (Exception e) {
+			log.error("Error decoding response: {}", e.getMessage(), e);
+
+			return e;
 		}
-		
-		return new ClientDecoderException(HttpStatus.valueOf(response.status()), responseAC);
 	}
 
 }

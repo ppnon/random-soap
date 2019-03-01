@@ -16,19 +16,20 @@ public class SecurityS2SErrorDecoder implements ErrorDecoder{
 	@Override
 	public Exception decode(String methodKey, Response response) {
 		
-		log.debug("Error Response: [{}] {}", response.status(), response.body().toString());
+		log.warn("Response to decode: {}[{}] : {}", methodKey, response.status(), response.body());
 		
-		S2SResponse<?> responseS2S;
 		try {
-			responseS2S = new ObjectMapper().readValue(response.body().asInputStream(), S2SResponse.class);
-
-		} catch (Exception e) {
-			log.debug("Error trying to read the response: {}", e.getMessage());
+			S2SResponse<?> body = new ObjectMapper().readValue(
+					response.body().asInputStream(), S2SResponse.class);
 			
-			responseS2S = new S2SResponse.Builder<>().build();
+			log.debug("Reponse decoded: {}", body.toString());
+
+			return new ClientDecoderException(HttpStatus.valueOf(response.status()), body);
+		} catch (Exception e) {
+			log.error("Error decoding response: {}", e.getMessage(), e);
+
+			return e;
 		}
-		
-		return new ClientDecoderException(HttpStatus.valueOf(response.status()), responseS2S);
 	}
 
 }

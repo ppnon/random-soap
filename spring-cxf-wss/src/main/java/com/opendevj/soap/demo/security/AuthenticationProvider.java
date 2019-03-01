@@ -37,11 +37,11 @@ public class AuthenticationProvider extends AbstractUserDetailsAuthenticationPro
 			UsernamePasswordAuthenticationToken authentication) {
 
 		String credential = authentication.getCredentials().toString();
-		Assert.hasText(username, envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_REQUIRED));
-		Assert.hasText(credential, envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_REQUIRED));
+		Assert.hasText(username, envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_REQUIRED));
+		Assert.hasText(credential, envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_REQUIRED));
 		
-		Assert.isTrue(username.matches(usrRegex), envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_INVALID));
-		Assert.isTrue(credential.matches(pwdRegex), envMessages.get(Messages.MSG_LOGIN_CREDENTIALS_INVALID));
+		Assert.isTrue(username.matches(usrRegex), envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_INVALID));
+		Assert.isTrue(credential.matches(pwdRegex), envMessages.get(Messages.KEY_LOGIN_CREDENTIALS_INVALID));
 		
 		return service.doAuthenticate(username, credential);
 	}

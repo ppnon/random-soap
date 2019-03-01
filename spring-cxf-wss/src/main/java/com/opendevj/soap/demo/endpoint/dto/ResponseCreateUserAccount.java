@@ -34,6 +34,7 @@ public class ResponseCreateUserAccount {
     @XmlElement(required = true, nillable = true)
     protected String username;
     @XmlElement(required = true, nillable = true)
+    @ToString.Exclude
     protected String credential;
 
 }
