@@ -64,11 +64,11 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 		ResponseEntity<AcResponse<AcAccountResponse>> account = client.createAccount(
 				new AcRequest.Builder<AcAccountRequest>()
-				.widthMetadata(new Metadata.Builder()
-						.widthUser(getUser().getUsername())
-						.widthHostname(getHostname())
+				.withMetadata(new Metadata.Builder()
+						.withUser(getUser().getUsername())
+						.withHostname(getHostname())
 						.build())
-				.widthData(newAccount)
+				.withData(newAccount)
 				.build());
 		
 		if (account.getStatusCode().is4xxClientError()) {
@@ -83,12 +83,12 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 		ResponseEntity<AcResponse<AcProfileResponse>> profile = client.associateProfile(
 				account.getBody().getData().getId(), new AcRequest.Builder<ArrayList<AcProfileRequest>>()
-				.widthMetadata(new Metadata.Builder()
-						.widthUser(getUser().getUsername())
-						.widthHostname(getHostname())
+				.withMetadata(new Metadata.Builder()
+						.withUser(getUser().getUsername())
+						.withHostname(getHostname())
 						.build())
-				.widthData(new ArrayList<AcProfileRequest>(Arrays.asList(new AcProfileRequest.Builder()
-						.widthId(request.getProfileId().toString()).build())))
+				.withData(new ArrayList<AcProfileRequest>(Arrays.asList(new AcProfileRequest.Builder()
+						.withId(request.getProfileId().toString()).build())))
 				.build());
 
 		if (profile.getStatusCode().is4xxClientError()) {
@@ -134,7 +134,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 		if (errors.hasErrors()) {
 			for (ObjectError e : errors.getAllErrors()) {
-				log.warn("validation error width {} : {}", e.getObjectName(), e.getDefaultMessage());
+				log.warn("validation error with {} : {}", e.getObjectName(), e.getDefaultMessage());
 			}
 		}
 		return errors.hasErrors();

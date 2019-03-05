@@ -23,12 +23,12 @@ public class S2SError implements Serializable {
 		private String userMessage;
 		private String code;
 		
-		public Builder widthUserMessage(String userMessage) {
+		public Builder withUserMessage(String userMessage) {
 			this.userMessage = userMessage;
 			return this;
 		}
 		
-		public Builder widthCode(String code) {
+		public Builder withCode(String code) {
 			this.code = code;
 			return this;
 		}

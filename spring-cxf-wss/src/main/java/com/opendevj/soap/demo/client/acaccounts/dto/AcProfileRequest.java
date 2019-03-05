@@ -22,7 +22,7 @@ public class AcProfileRequest implements Serializable {
 		
 		private String id;
 		
-		public Builder widthId(String id) {
+		public Builder withId(String id) {
 			this.id = id;
 			return this;
 		}

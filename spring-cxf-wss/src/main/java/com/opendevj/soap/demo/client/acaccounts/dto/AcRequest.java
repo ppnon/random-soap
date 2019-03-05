@@ -23,12 +23,12 @@ public class AcRequest<T extends Serializable> implements Serializable {
 		private Metadata metadata;
 		private T data;
 		
-		public Builder<T> widthMetadata(Metadata metadada) {
+		public Builder<T> withMetadata(Metadata metadada) {
 			this.metadata = metadada;
 			return this;
 		}
 		
-		public Builder<T> widthData(T data) {
+		public Builder<T> withData(T data) {
 			this.data = data;
 			return this;
 		}
@@ -57,12 +57,12 @@ public class AcRequest<T extends Serializable> implements Serializable {
 			private String user;
 			private String hostname;
 			
-			public Builder widthUser(String user) {
+			public Builder withUser(String user) {
 				this.user = user;
 				return this;
 			}
 			
-			public Builder widthHostname(String hostname) {
+			public Builder withHostname(String hostname) {
 				this.hostname = hostname;
 				return this;
 			}

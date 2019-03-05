@@ -28,22 +28,22 @@ public class S2SResponse<T extends Serializable> implements Serializable {
 		private T data;
 		private List<S2SError> errors;
 		
-		public Builder<T> widthCode(String code) {
+		public Builder<T> withCode(String code) {
 			this.code = code;
 			return this;
 		}
 		
-		public Builder<T> widthMessage(String message) {
+		public Builder<T> withMessage(String message) {
 			this.message = message;
 			return this;
 		}
 		
-		public Builder<T> widthData(T data) {
+		public Builder<T> withData(T data) {
 			this.data = data;
 			return this;
 		}
 		
-		public Builder<T> widthErrors(List<S2SError> errors) {
+		public Builder<T> withErrors(List<S2SError> errors) {
 			this.errors = errors;
 			return this;
 		}

@@ -30,17 +30,17 @@ public class AcProfileResponse implements Serializable {
 		private String email;
 		private String credential;
 		
-		public Builder widthUsername(String username) {
+		public Builder withUsername(String username) {
 			this.username = username;
 			return this;
 		}
 		
-		public Builder widthEmail(String email) {
+		public Builder withEmail(String email) {
 			this.email = email;
 			return this;
 		}
 		
-		public Builder widthCredential(String credential) {
+		public Builder withCredential(String credential) {
 			this.credential = credential;
 			return this;
 		}

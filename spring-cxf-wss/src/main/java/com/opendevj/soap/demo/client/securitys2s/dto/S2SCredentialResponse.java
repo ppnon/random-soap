@@ -27,22 +27,22 @@ public class S2SCredentialResponse implements Serializable {
 		private String subEntityID;
 		private String profileCode;
 		
-		public Builder widthAccountID(String accountID) {
+		public Builder withAccountID(String accountID) {
 			this.accountID = accountID;
 			return this;
 		}
 		
-		public Builder widthEntityID(String entityID) {
+		public Builder withEntityID(String entityID) {
 			this.entityID = entityID;
 			return this;
 		}
 		
-		public Builder widthSubEntityID(String subEntityID) {
+		public Builder withSubEntityID(String subEntityID) {
 			this.subEntityID = subEntityID;
 			return this;
 		}
 		
-		public Builder widthProfileCode(String profileCode) {
+		public Builder withProfileCode(String profileCode) {
 			this.profileCode = profileCode;
 			return this;
 		}

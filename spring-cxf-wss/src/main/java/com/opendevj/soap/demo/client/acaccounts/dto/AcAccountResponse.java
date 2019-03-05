@@ -34,27 +34,27 @@ public class AcAccountResponse implements Serializable {
 		private String surname;
 		private String secondSurname;
 		
-		public Builder widthId(String id) {
+		public Builder withId(String id) {
 			this.id = id;
 			return this;
 		}
 		
-		public Builder widthFirstName(String firstName) {
+		public Builder withFirstName(String firstName) {
 			this.firstName = firstName;
 			return this;
 		}
 		
-		public Builder widthMiddleName(String middleName) {
+		public Builder withMiddleName(String middleName) {
 			this.middleName = middleName;
 			return this;
 		}
 		
-		public Builder widthSurname(String surname) {
+		public Builder withSurname(String surname) {
 			this.surname = surname;
 			return this;
 		}
 		
-		public Builder widthSecondSurname(String secondSurname) {
+		public Builder withSecondSurname(String secondSurname) {
 			this.secondSurname = secondSurname;
 			return this;
 		}

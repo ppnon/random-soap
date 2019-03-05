@@ -60,97 +60,97 @@ public class AcAccountRequest implements Serializable {
 		private String jobTitleId;
 		private String roleId;
 		
-		public Builder widthCountryId(String countryId) {
+		public Builder withCountryId(String countryId) {
 			this.countryId = countryId;
 			return this;
 		}
 		
-		public Builder widthEntityId(String entityId) {
+		public Builder withEntityId(String entityId) {
 			this.entityId = entityId;
 			return this;
 		}
 		
-		public Builder widthOfficeId(String officeId) {
+		public Builder withOfficeId(String officeId) {
 			this.officeId = officeId;
 			return this;
 		}
 		
-		public Builder widthSubEntityId(String subEntityId) {
+		public Builder withSubEntityId(String subEntityId) {
 			this.subEntityId = subEntityId;
 			return this;
 		}
 		
-		public Builder widthUsername(String username) {
+		public Builder withUsername(String username) {
 			this.username = username;
 			return this;
 		}
 		
-		public Builder widthDocumentIDType(String documentIDType) {
+		public Builder withDocumentIDType(String documentIDType) {
 			this.documentIDType = documentIDType;
 			return this;
 		}
 		
-		public Builder widthDocumentIDNumber(String documentIDNumber) {
+		public Builder withDocumentIDNumber(String documentIDNumber) {
 			this.documentIDNumber = documentIDNumber;
 			return this;
 		}
 		
-		public Builder widthFirstName(String firstName) {
+		public Builder withFirstName(String firstName) {
 			this.firstName = firstName;
 			return this;
 		}
 		
-		public Builder widthMiddleName(String middleName) {
+		public Builder withMiddleName(String middleName) {
 			this.middleName = middleName;
 			return this;
 		}
 		
-		public Builder widthSurname(String surname) {
+		public Builder withSurname(String surname) {
 			this.surname = surname;
 			return this;
 		}
 		
-		public Builder widthSecondSurname(String secondSurname) {
+		public Builder withSecondSurname(String secondSurname) {
 			this.secondSurname = secondSurname;
 			return this;
 		}
 		
-		public Builder widthEmail(String email) {
+		public Builder withEmail(String email) {
 			this.email = email;
 			return this;
 		}
 		
-		public Builder widthPhoneNumber1(String phoneNumber1) {
+		public Builder withPhoneNumber1(String phoneNumber1) {
 			this.phoneNumber1 = phoneNumber1;
 			return this;
 		}
 		
-		public Builder widthPhoneNumber2(String phoneNumber2) {
+		public Builder withPhoneNumber2(String phoneNumber2) {
 			this.phoneNumber2 = phoneNumber2;
 			return this;
 		}
 		
-		public Builder widthObservation(String observation) {
+		public Builder withObservation(String observation) {
 			this.observation = observation;
 			return this;
 		}
 		
-		public Builder widthChannelId(String channelId) {
+		public Builder withChannelId(String channelId) {
 			this.channelId = channelId;
 			return this;
 		}
 		
-		public Builder widthSalesChannelId(String salesChannelId) {
+		public Builder withSalesChannelId(String salesChannelId) {
 			this.salesChannelId = salesChannelId;
 			return this;
 		}
 		
-		public Builder widthJobTitleId(String jobTitleId) {
+		public Builder withJobTitleId(String jobTitleId) {
 			this.jobTitleId = jobTitleId;
 			return this;
 		}
 		
-		public Builder widthRoleId(String roleId) {
+		public Builder withRoleId(String roleId) {
 			this.roleId = roleId;
 			return this;
 		}

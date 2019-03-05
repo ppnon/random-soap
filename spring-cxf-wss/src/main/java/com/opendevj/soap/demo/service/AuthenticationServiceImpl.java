@@ -46,9 +46,9 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		
 		ResponseEntity<S2SResponse<S2SCredentialResponse>> response = client.login(
 				new S2SCredentialRequest.Builder()
-					.widthTxtLogin(username)
-					.widthTxtContrasena(credential)
-					.widthCodApli(appCode)
+					.withTxtLogin(username)
+					.withTxtContrasena(credential)
+					.withCodApli(appCode)
 					.build());
 		
 		if (HttpStatus.OK.equals(response.getStatusCode())) {

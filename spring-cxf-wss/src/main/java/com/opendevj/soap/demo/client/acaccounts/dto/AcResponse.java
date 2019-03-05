@@ -24,12 +24,12 @@ public class AcResponse<T extends Serializable> implements Serializable {
 		private T data;
 		private List<AcError> errors;
 		
-		public Builder<T> widthData(T data) {
+		public Builder<T> withData(T data) {
 			this.data =  data;
 			return this;
 		}
 		
-		public Builder<T> widthErrors(List<AcError> errors) {
+		public Builder<T> withErrors(List<AcError> errors) {
 			this.errors = errors;
 			return this;
 		}

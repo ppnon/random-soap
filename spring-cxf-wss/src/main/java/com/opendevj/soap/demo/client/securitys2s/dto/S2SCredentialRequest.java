@@ -24,17 +24,17 @@ public class S2SCredentialRequest implements Serializable{
 		private String txtContrasena;
 		private String codApli;
 		
-		public Builder widthTxtLogin(String login) {
+		public Builder withTxtLogin(String login) {
 			this.txtlogin = login;
 			return this;
 		}
 		
-		public Builder widthTxtContrasena(String contrasena) {
+		public Builder withTxtContrasena(String contrasena) {
 			this.txtContrasena = contrasena;
 			return this;
 		}
 		
-		public Builder widthCodApli(String app) {
+		public Builder withCodApli(String app) {
 			this.codApli = app;
 			return this;
 		}

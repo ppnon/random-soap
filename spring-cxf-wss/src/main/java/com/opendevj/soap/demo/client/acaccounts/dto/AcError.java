@@ -25,17 +25,17 @@ public class AcError implements Serializable {
 		private String code;
 		private String userMessage;
 		
-		public Builder widthTraceId(String traceId) {
+		public Builder withTraceId(String traceId) {
 			this.traceId = traceId;
 			return this;
 		}
 		
-		public Builder widthUserMessage(String userMessage) {
+		public Builder withUserMessage(String userMessage) {
 			this.userMessage = userMessage;
 			return this;
 		}
 		
-		public Builder widthCode(String code) {
+		public Builder withCode(String code) {
 			this.code = code;
 			return this;
 		}
